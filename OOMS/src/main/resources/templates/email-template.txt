@@ -1,0 +1,14 @@
+<html>
+ 
+<head></head>
+ 
+<body>
+    <p>Dear ${Name},</p>
+    <p>Click the below button to activate your account !!!</b></p>
+	<button><a href=${URL}>Activate Account</a></button>
+    <p>Thanks</p>
+    <p>${signature}</p>
+    <p>${location}</p>
+</body>
+ 
+</html>

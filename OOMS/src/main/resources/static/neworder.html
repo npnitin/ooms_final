@@ -1,0 +1,193 @@
+<div data-ng-controller="neworderController">
+                
+              
+               <div style='float: right;'> <a href="#/orders">Back</a></div>
+               
+             
+              <!--  <select style="width:200px" class="select2" data-ng-model="selectedItemForAutoComplete" data-ng-options="customer.name for customer in customers" ng-change="call()"></select> -->
+               
+						
+					  
+				<div class="modal-body row">
+					  <div class="col-md-3">
+					    	Select if existing customer:
+					  </div>
+					  <div class="col-md-9">
+					   		<select  class="form-control" data-ng-model="selectedCustomerForAutoComplete" data-ng-options="customer.name for customer in customers" ng-change="call()"></select> 
+					  </div>
+				</div>
+					  
+	<form id ="orderFrm">  
+               
+                <div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cname" placeholder="Customer Name" ng-model="ocname"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="email" class="form-control"
+                          id="cemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Customer Email" ng-model="ocemail"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="number" class="form-control"
+                      		id="cphone" placeholder="Customer mobile No" ng-model="ocphone"/>
+					  </div>
+					  <div class="col-md-6">
+					   		
+					  </div>
+				</div>
+				Customer Address Details:
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstreet" placeholder="Street Name" ng-model="ocstreet"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="ccity" placeholder="Customer City" ng-model="occity"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Customer state" ng-model="ocstate"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="number" class="form-control"
+                          id="cpincode" placeholder="Customer Pincode" ng-model="ocpincode"/>
+					  </div>
+				</div>
+				
+				Order Details:
+				<div class="modal-body row">
+					  
+					 <div class="col-md-12">
+					    	  <textarea class="form-control" rows="5" id="description" placeholder="Order Description goes here"></textarea>
+					 </div>
+					  
+				</div> 
+				
+				<div class="modal-body row">
+				
+					<div class="col-md-2">
+					    	Select Item:
+					  </div>
+					  <div class="col-md-4">
+						<select  class="form-control" data-ng-model="selectedItem" data-ng-options="item.name for item in Useritems" ng-change="fillValues()"></select> 
+					  </div>
+					  <div class="col-md-2">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Item Price" ng-model="iprice"/>
+					  </div>
+					  <div class="col-md-2">
+					   		<input type="text" class="form-control"
+                          id="cpincode" placeholder="Enter Quantity" ng-model="iquantity"/>
+					  </div>
+					  <div class="col-md-1">
+					   		<button class="btn btn-primary" ng-click="addItem()" data-toggle="tooltip" title="Add Item to cart">
+   								 <i class="fa fa-plus" aria-hidden="true"></i>
+							</button>
+					  </div>
+					  <div class="col-md-1">
+					   		<button class="btn btn-primary" ng-click="clearFrm()" data-toggle="tooltip" title="Clear">
+   								Clear
+							</button>
+					  </div>
+				</div>
+				 
+                </form>
+                
+                <table class="table table-bordered">
+                
+                <thead>
+                	<th>Item Name</th>
+                	<th>Price</th>
+                	<th>Quantity</th>
+                	<th>Action</th>
+                </thead>
+                <tbody>
+                	<tr ng-repeat="item in localItems track by $index" ng-init="index=0">
+               			<td>{{item.name}}</td>
+               			<td>{{item.price}}</td>
+               			<td>{{item.count}}</td>
+               			<td><button class="btn btn-primary" ng-click="deleteItem(index)">
+   								 <i class="fa fa-trash-o" aria-hidden="true"></i>
+							</button></td>
+               		</tr>
+                </tbody>
+                
+                </table>
+                 
+                 <h6>Select taxes</h6>
+                 <div class="col-md-4">
+						<select  class="form-control" data-ng-model="selectedTax" data-ng-options="tax.name for tax in taxes" ng-change="fillValues()"></select><br/> 
+						<button class="btn btn-primary" ng-click="previewOrder()" data-toggle="modal" data-target="#myModal">Preview Order</button>
+						<a href="#/confirmorder"  class="btn btn-primary btn float-right" ng-click="addDataToLocalStorage()">Confirm Order</a>
+				</div>
+   				 <br/>
+   				 
+   				 
+   				 
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Preview Order</h4>
+        </div>
+        
+        <div class="modal-body">
+          <p>Customer Details</p>
+          <table>
+          <tr><td>Customer Name:</td><td>{{ocname}}</td></tr>
+          <tr><td>Customer Email:</td><td>{{ocemail}}</td></tr>
+          <tr><td>Customer Phone:</td><td>{{ocphone}}</td></tr>
+          <tr><td>Customer Address:</td><td>{{ocstreet}} {{occity}} {{ocstate}} - {{ocpincode}}</td></tr>
+          </table>
+          <hr/>
+          <p>Item Details</p>
+          <table >
+          <thead>
+                	<th>Item Name</th>
+                	<th>Price</th>
+                	<th>Quantity</th>
+                	<th>Total</th>
+                </thead>
+          <tbody>
+                	<tr ng-repeat="item in localItems">
+               			<td>{{item.name}}</td>
+               			<td>{{item.price}}</td>
+               			<td>{{item.count}}</td>
+               			<td>{{item.count * item.price}}</td>
+               		</tr>
+           </tbody>
+           </table>
+          <hr/>
+          <p>Tax Details</p>
+          <table>
+          <tr><td>Tax Name:</td><td>{{selectedTax.name}}</td></tr>
+          <tr><td>Tax Percentage:</td><td>{{selectedTax.percentage}}%</td></tr>
+          </table>
+           <hr/>
+          <p>Order Summary</p>
+          <table>
+          <tr><td>Total Amount:</td><td>{{totalamt}}</td></tr>
+          <tr><td>Total Tax:</td><td>{{taxAmt}}</td></tr>
+          <tr><td>Total Amount to be paid:</td><td>{{totalamt + taxAmt}}</td></tr>
+          </table>
+        </div>
+        
+        
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+									
+</div>

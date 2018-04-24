@@ -1,0 +1,93 @@
+<div ng-controller = 'supplierDetailsController'>
+
+
+<div style='float: right;'> <!-- <a href="#/suppliers">Back</a></div> --><a href="#" onclick="history.back();">Back</a>
+ <h4>Supplier Details</h4>
+<table class ="table">
+<tbody>
+<tr class="danger">
+	
+</tr>
+<tr class="info"> 
+<td>Supplier Name:</td> 
+<td>{{supplier.name}}</td>
+</tr>
+<tr class="warning"> 
+<td>Supplier Email:</td> 
+<td>{{supplier.email}}</td>
+</tr>
+<tr class="active"> 
+<td>supplier Phone:</td> 
+<td>{{supplier.phone}}</td>
+</tr>
+<tr class="success"> 
+<td>supplier Address:</td> 
+<td>{{supplier.address.street}} {{supplier.address.city}} {{supplier.address.State}} {{supplier.address.pincode}}</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<h4>Supplier Orders</h4>
+<table class ="table">
+	<thead>
+			<th>Sr.NO</th>
+			<th>Date Of Order</th>
+			<th>Total Bill</th>
+			<th>Item Details</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="order in supplier.orders">
+				<td>{{$index+1}}</td>
+				<td>{{order.orderDate}}</td>
+				<td>'&#8377;'{{order.totalCost}} </td>
+				<td>
+				
+					<table>
+						<thead>
+							<th>Sr.No</th>
+							<th>Item Name</th>
+							<th>Item Description</th>
+							<th>Item Brand</th>
+							<th>Item Price</th>
+							<th>Item UOM</th>
+							<th>Item Quantity</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in order.items">
+								<td>{{$index+1}}</td>
+								<td>{{item.item.name}}</td>
+								<td>{{item.item.description}}</td>
+								<td>{{item.item.brand}}</td>
+								<td>'&#8377;'{{item.item.price}} </td>
+								<td>{{item.item.uom}}</td>
+								<td>{{item.count}}</td>
+							</tr>
+						</tbody>
+					</table>
+				
+				
+				
+				</td>
+			</tr>
+		</tbody>
+</table>
+<hr/>
+<table class = "table table-bordered">
+<thead>
+<th>Total Amount </th>
+</thead>
+<tbody>
+<tr>
+<td>'&#8377;'{{totalAmt}}</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+</div>

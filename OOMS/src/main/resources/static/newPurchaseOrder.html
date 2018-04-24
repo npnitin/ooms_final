@@ -1,0 +1,111 @@
+<div ng-controller='newPurchaseOrderController'>
+
+	<div style='float: right;'> <a href="#/orders">Back</a></div>
+		<div class="modal-body row">
+					  <div class="col-md-3">
+					    	Select if existing Supplier:
+					  </div>
+					  <div class="col-md-9">
+					   		<select  class="form-control" data-ng-model="selectedSupplierForAutoComplete" data-ng-options="supplier.name for supplier in suppliers" ng-change="call()"></select> 
+					  </div>
+		</div>
+		<form id ='porderFrm'>
+		
+		  <div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="sname" placeholder="Supplier Name" ng-model="posname"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="semail" placeholder="Supplier Email" ng-model="posemail"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="sphone" placeholder="Supplier mobile No" ng-model="posphone"/>
+					  </div>
+					  <div class="col-md-6">
+					   		
+					  </div>
+				</div>
+				Customer Address Details:
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="sstreet" placeholder="Street Name" ng-model="posstreet"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="scity" placeholder="Supplier City" ng-model="poscity"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="sstate" placeholder="Supplier state" ng-model="posstate"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="spincode" placeholder="Supplier Pincode" ng-model="pospincode"/>
+					  </div>
+				</div>
+				
+				Order Details:
+				<div class="modal-body row">
+				
+					<div class="col-md-2">
+					    	Select Item:
+					  </div>
+					  <div class="col-md-4">
+						<select  class="form-control" data-ng-model="selectedItem" data-ng-options="item.name for item in catalogItems" ng-change="fillValues()"></select> 
+					  </div>
+					  <div class="col-md-2">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Item Price" ng-model="iprice"/>
+					  </div>
+					  <div class="col-md-2">
+					   		<input type="text" class="form-control"
+                          id="cpincode" placeholder="Enter Quantity" ng-model="iquantity"/>
+					  </div>
+					  <div class="col-md-1">
+					   		<button class="btn btn-primary" ng-click="addItem()" data-toggle="tooltip" title="Add Item to cart">
+   								 <i class="fa fa-plus" aria-hidden="true"></i>
+							</button>
+					  </div>
+					  <div class="col-md-1">
+					   		<button class="btn btn-primary" ng-click="clearFrm()" data-toggle="tooltip" title="Clear">
+   								Clear
+							</button>
+					  </div>
+				</div>
+				 
+                </form>
+                
+                <table class="table table-bordered">
+                
+                <thead>
+                	<th>Item Name</th>
+                	<th>Price</th>
+                	<th>Quantity</th>
+                	<th>Action</th>
+                </thead>
+                <tbody>
+                	<tr ng-repeat="item in localItems track by $index" ng-init="index=0">
+               			<td>{{item.name}}</td>
+               			<td>{{item.price}}</td>
+               			<td>{{item.count}}</td>
+               			<td><button class="btn btn-primary" ng-click="deleteItem(index)">
+   								 <i class="fa fa-trash-o" aria-hidden="true"></i>
+							</button></td>
+               		</tr>
+                </tbody>
+                
+                </table>
+                 <button class="btn btn-success btn float-right" ng-click="">
+   								<a href="#/confirmPurchaseOrder" ng-click="addSupplierToLocalStorage()">Confirm Order</a>
+							</button>			
+</div>

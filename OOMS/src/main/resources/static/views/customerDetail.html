@@ -1,0 +1,92 @@
+<div ng-controller='customerDetailController'>
+
+ <div style='float: right;'> <a href="#/customers">Back</a></div>
+ <h4>Customer Details</h4>
+<table class ="table">
+<tbody>
+<tr class="danger">
+	
+</tr>
+<tr class="info"> 
+<td>Customer Name:</td> 
+<td>{{customer.name}}</td>
+</tr>
+<tr class="warning"> 
+<td>Customer Email:</td> 
+<td>{{customer.email}}</td>
+</tr>
+<tr class="active"> 
+<td>Customer Phone:</td> 
+<td>{{customer.mobile}}</td>
+</tr>
+<tr class="success"> 
+<td>Customer Address:</td> 
+<td>{{customer.address.street}} {{customer.address.city}} {{customer.address.State}} {{customer.address.pincode}}</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<h4>Customer Orders</h4>
+<table class ="table">
+	<thead>
+			<th>Sr.NO</th>
+			<th>Date Of Order</th>
+			<th>Total Bill</th>
+			<th>Paid Bill</th>
+			<th>Balance Bill</th>
+			<th>Item Details</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="order in customer.orders">
+				<td>{{$index+1}}</td>
+				<td>{{order.dateOfOrder}}</td>
+				<td>{{order.totalCost}}</td>
+				<td>{{order.advanceAmount}}</td>
+				<td>{{order.remainingbalance}}</td>
+				<td>
+				
+					<table>
+						<thead>
+							<th>Sr.No</th>
+							<th>Item Name</th>
+							<th>Item Description</th>
+							<th>Item Brand</th>
+							<th>Item Price</th>
+							<th>Item UOM</th>
+							<th>Item Quantity</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in order.items">
+								<td>{{$index+1}}</td>
+								<td>{{item.item.name}}</td>
+								<td>{{item.item.description}}</td>
+								<td>{{item.item.brand}}</td>
+								<td>{{item.item.price}}</td>
+								<td>{{item.item.uom}}</td>
+								<td>{{item.count}}</td>
+							</tr>
+						</tbody>
+					</table>
+				
+				
+				
+				</td>
+			</tr>
+		</tbody>
+</table>
+<hr/>
+<table class = "table table-bordered">
+<thead>
+<th>Total Amount</th>
+<th>Amount Paid</th>
+<th>Amount Balance</th>
+</thead>
+<tbody>
+<tr>
+<td>{{totalAmt}}</td><td>{{paidAmt}}</td><td>{{balanceAmt}}</td>
+</tr>
+</tbody>
+</table>

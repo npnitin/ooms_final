@@ -1,0 +1,205 @@
+<div ng-controller='taxController'>
+
+<div class="modal-body row">
+					  <div class="col-md-9">
+					    	<button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm1">Add New Tax</button>
+					  </div>
+					  <div class="col-md-3">
+					   		<input type="text" class="form-control" ng-model="search" placeholder="Enter text to search" />
+					  </div>
+</div>
+<div class="card mb-3">
+        
+        <div class="card-header">
+          <i class="fa fa-table"></i> My Txaes</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Tax ID</th>
+                  <th>Tax Name</th>
+                  <th>Tax Description</th>
+                  <th>Percentage</th>
+                  <th>Modified Date</th>
+                  <th>Added Date</th>
+                  <th>Action</th>
+ 
+                </tr>
+              </thead>
+             
+              <tbody>
+              <tr ng-repeat = "tax in taxes | filter : search">
+              	<td width=5%>#{{tax.id}}</td>
+              	<td width=20%>{{tax.name}}</td>
+              	<td width=25%>{{tax.description}}</td>
+              	<td width=5%>{{tax.percentage}}%</td>
+              	<td width=10%>{{tax.updatedDate}}</td>
+              	<td width=10%>{{tax.creationDate}}</td>
+              	<td width=15%>
+              		 <button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm3" data-toggle="tooltip" title="Delete Tax" ng-click="addTaxToDelete(tax)">
+         				 <i class="fa fa-trash-o" aria-hidden="true"></i>
+        			</button>
+        			&nbsp
+        			<button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm2" ng-click="addTaxToUpdate(tax)" data-toggle="tooltip" title="Update Customer Details">
+          				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        			</button>
+              	</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+     <div class="modal fade" id="myModalNorm1" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            Add New Tax
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form" id="newItemFrm">
+                
+                  <div class="form-group">
+                    <label for="iname">Tax Name:</label>
+                      <input type="text" class="form-control"
+                      id="iname" placeholder="Tax Name" ng-model="tname"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="idescription">Tax Description</label>
+                      <input type="text" class="form-control"
+                          id="idescription" placeholder="Tax Description" ng-model="tdescription"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="ibrand">Tax Percentage</label>
+                      <input type="text" class="form-control"
+                          id="ibrand" placeholder="Tax Percentage" ng-model="tpercentage"/>
+                  </div>
+                  
+                 
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="addTax()" data-dismiss="modal">
+                    Add Tax
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="myModalNorm2" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            Update Tax
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form" id="newItemFrm">
+                
+                  <div class="form-group">
+                    <label for="iname">Tax Name:</label>
+                      <input type="text" class="form-control"
+                      id="iname" placeholder="Tax Name" ng-model="utname"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="idescription">Tax Description</label>
+                      <input type="text" class="form-control"
+                          id="idescription" placeholder="Tax Description" ng-model="utdescription"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="ibrand">Tax Percentage</label>
+                      <input type="text" class="form-control"
+                          id="ibrand" placeholder="Tax Percentage" ng-model="utpercentage"/>
+                  </div>
+                  
+                 
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="updateTax()" data-dismiss="modal">
+                    Update Tax
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalNorm3" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            Delete Tax
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                
+            </div>
+            
+            
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="deleteTaxServer()" data-dismiss="modal">
+                    Delete Tax
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>

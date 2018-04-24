@@ -1,0 +1,49 @@
+<html>
+ 
+<head></head>
+ 
+<body>
+    <p>Dear ${name},</p>
+    <p>Thanks for your order !!!</b></p>
+	<p><b>Order Details are:</b></p>
+	<table>
+	<tr><td>Order Date:${OrderDate}</td><td>OrderID:#${id}</td></tr>
+	<tr/>
+	<tr><td>Total amount:Rs.${total_cost}  Tax:${tax.name} ${tax.percentage}%</td></tr>
+	<tr/>
+	<tr><td><b>Item Details:<b></td></tr>
+	<tr/>
+	<tr>
+	<table border="1px solid">
+		
+		<tr><th>Id</th><th>Item Count</th><th>Item Name</th><th>Item Description</th><th>Item Price Per Unit</th></tr>
+		
+		<#list Items as item>
+		<tr>
+    	<td>${item?index+1}</td>
+    	<td>${item.count}</td>
+    	<td>${item.item.name}</td>
+    	<td>${item.item.description}</td>
+    	<td>Rs.${item.item.price}</td>
+    	</tr>
+		</#list>
+		
+	</table>
+	</tr>
+	<tr/>
+	<tr><td>Total Cost including Tax:Rs.${total_order_cost}</td><td></td></tr>
+	<tr/>
+	<tr><td>Advance Deposited:Rs.${adavance_deposit}  Remaining balance:Rs.${remain_balance}</td></tr>
+	<tr/>
+	</table>
+    <p>Thanks</p>
+    <p>${signature}</p>
+    <p>${address}</p>
+    
+    
+    
+    
+    
+</body>
+ 
+</html>

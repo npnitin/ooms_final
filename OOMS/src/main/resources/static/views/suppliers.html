@@ -1,0 +1,141 @@
+<div  ng-controller="supplierController">
+<div class="modal-body row">
+					  <div class="col-md-9">
+					    	<button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm1">Add New Supplier</button>
+					  </div>
+					  <div class="col-md-3">
+					   		<input type="text" class="form-control" ng-model="search" placeholder="Enter text to search" />
+					  </div>
+	</div>
+  
+      <div class="card mb-3">
+        
+        <div class="card-header">
+          <i class="fa fa-table"></i> My Suppliers</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Pincode</th>
+                </tr>
+              </thead>
+              <tfoot>
+                 <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Pincode</th>
+                </tr>
+              </tfoot>
+              <tbody>
+              <tr ng-repeat = "supplier in suppliers | filter : search">
+              	<td>{{supplier.name}}</td>
+              	<td>{{supplier.email}}</td>
+              	<td>{{supplier.phone}}</td>
+              	<td>{{supplier.address.city}}</td>
+              	<td>{{supplier.address.state}}</td>
+              	<td>{{supplier.address.pincode}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      
+    <!-- modal for adding new item -->  
+    <div class="modal fade" id="myModalNorm1" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="height: 100px;width: 800px">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            Add New Supplier Details
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form">
+                Supplier Details
+                <div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cname" placeholder="Supplier Name" ng-model="sname"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="cemail" placeholder="Supplier Email" ng-model="semail"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cphone" placeholder="Supplier mobile No" ng-model="sphone"/>
+					  </div>
+					  <div class="col-md-6">
+					   		
+					  </div>
+				</div>
+				Supplier Address Details:
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstreet" placeholder="Street Name" ng-model="sstreet"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="ccity" placeholder="Customer City" ng-model="scity"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Customer state" ng-model="sstate"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="cpincode" placeholder="Supplier Pincode" ng-model="spincode"/>
+					  </div>
+				</div>
+				
+                 
+                  
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="addSupplier()">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+      
+      
+      
+</div>
+
+

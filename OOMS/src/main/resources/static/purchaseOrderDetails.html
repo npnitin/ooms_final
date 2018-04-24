@@ -1,0 +1,65 @@
+<div ng-controller='purchaseOrderDetailsController'>
+<table cellspacing="10px" cellpadding="10px">
+<tbody>
+<tr>
+<td  style="font-weight:bold">Supplier Details:</td>
+ <div style='float: right;'> <a href="#/purchaseOrders">Back</a></div>
+</tr>
+<tr>
+<td>Supplier Name:</td>
+<td>{{order.supplier.name}}</td>
+</tr>
+<tr>
+<td>Supplier Email:</td>
+<td>{{order.supplier.email}}</td>
+</tr>
+<tr>
+<td>Supplier Phone:</td>
+<td>{{order.supplier.mobile}}</td>
+</tr>
+<tr>
+<td>Date Of Order:</td>
+<td>{{order.orderDate}}</td>
+</tr>
+<tr>
+<td>Address:</td>
+<td>{{order.supplier.address.street}} {{order.supplier.address.city}} {{order.supplier.address.state}} {{order.supplier.address.pincode}}</td>
+</tr>
+<br/>
+<tr>
+<tr>
+<td  style="font-weight:bold">Item Details:</td>
+</tr>
+<table border ="1px" cellspacing="10px" cellpadding="10px">
+	<thead>
+		<th>Item Name</th>
+		<th>Item Description</th>
+		<th>Item Price</th>
+		<th>Item UOM</th>
+		<th>Item Brand</th>
+		<th>Item Quantity</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in order.items">
+			<td>{{item.item.name}}</td>
+			<td>{{item.item.description}}</td>
+			<td>'&#8377;'{{item.item.price}}</td>
+			<td>{{item.item.uom}}</td>
+			<td>{{item.item.brand}}</td>
+			<td>{{item.count}}</td>
+		</tr>
+	</tbody>
+</table>
+</tr>
+</tbody>
+</table>
+
+<br/>
+<table cellspacing="10px" cellpadding="10px">
+<tr><td style="font-weight:bold">Order Details:</td></tr>
+<tr>
+<td>Total Order Amount:</td>
+<td>'&#8377;'{{order.totalCost}}</td>
+</tr>
+</table>
+</div>

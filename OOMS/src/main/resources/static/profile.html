@@ -1,0 +1,42 @@
+<div ng-controller='profileController'>
+
+<br><br>
+<div class="container-fluid well span6" style="margin-left: 200px;">
+	<div class="row-fluid">
+        <div class="span2" >
+		    <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
+        </div>
+        <h4>Personal Details</h4>
+        <div class="span8">
+            <h6>Name: {{profile.name}}</h6>
+            <h6>Email: {{profile.email}}</h6>
+            <h6>Phone: {{profile.phone}}</h6>
+            <h6>Registration Date: {{profile.dateOfRegistration}}</h6>
+            <h6>Status: {{profile.status}}</h6>
+        </div>
+        <br/>
+        <h4>Address Details. <h6>These Details are used by your suppliers for purchase order delivery.</h6></h4>
+       
+        <div class="span8">
+            <h6>Street: {{profile.address.street}}</h6>
+            <h6>City: {{profile.address.city}}</h6>
+            <h6>State: {{profile.address.state}}</h6>
+            <h6>Pincode: {{profile.address.pincode}}</h6>
+        </div>
+        
+        <!-- <div class="span2">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                    Action 
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><span class="icon-wrench"></span> Modify</a></li>
+                    <li><a href="#"><span class="icon-trash"></span> Delete</a></li>
+                </ul>
+            </div>
+        </div> -->
+</div>
+</div>
+
+</div>

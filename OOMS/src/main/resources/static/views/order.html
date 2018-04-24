@@ -1,0 +1,154 @@
+<div  ng-controller="orderController">
+   <div class="modal-body row">
+					  <div class="col-md-9">
+					    	<a href="#/neworder" class="btn btn-primary">Add New Order</a>
+					  </div>
+					  <div class="col-md-3">
+					   		<input type="text" class="form-control" ng-model="search" placeholder="Enter text to search" />
+					  </div>
+	</div>
+
+      <div class="card mb-3">
+        
+        <div class="card-header">
+          <i class="fa fa-table"></i> My Orders</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Date</th>
+                  <th>Total Amount</th>
+                  <th>Advance Amount</th>
+                  <th>Balance Amount</th>
+                  <th>Action</th>
+ 
+                </tr>
+              </thead>
+             
+              <tbody>
+              <tr ng-repeat = "order in orders | filter : search">
+              	<td>{{order.customer.name}}</td>
+              	<td>{{order.dateOfOrder}}</td>
+              	<td>{{order.totalCost}}</td>
+              	<td>{{order.advanceAmount}}</td>
+              	<td>{{order.remainingbalance}}</td>
+              	<td>
+              		<button type="button" class="btn btn-primary" ng-click="saveOrderIdAndRedirectToOrderDetails(order.id)" data-toggle="tooltip" title="Delete Order Details"><i class="fa fa-trash-o" aria-hidden="true"></i></button>&nbsp
+              		<button type="button" class="btn btn-primary" ng-click="saveOrderIdAndRedirectToOrderDetails(order.id)" data-toggle="tooltip" title="Update Order Details"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>&nbsp
+              		<button type="button" class="btn btn-primary" ng-click="saveOrderIdAndRedirectToOrderDetails(order.id)" data-toggle="tooltip" title="View Order Details"><i class="fa fa-eye" aria-hidden="true"></i></button>
+              	</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      
+    <!-- modal for adding new item -->  
+    <div class="modal fade" id="myModalNorm1" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="height: 100px;width: 800px">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            Add New Order Details
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form">
+                Customer Details
+                <div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cname" placeholder="Customer Name" ng-model="ocname"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="cemail" placeholder="Customer Email" ng-model="ocemail"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cphone" placeholder="Customer mobile No" ng-model="ocphone"/>
+					  </div>
+					  <div class="col-md-6">
+					   		
+					  </div>
+				</div>
+				Customer Address Details:
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstreet" placeholder="Street Name" ng-model="ocstreet"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="ccity" placeholder="Customer City" ng-model="occity"/>
+					  </div>
+				</div>
+				
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Customer state" ng-model="ocstate"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="cpincode" placeholder="Customer Pincode" ng-model="ocpincode"/>
+					  </div>
+				</div>
+				
+				Order Details:
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Customer state" ng-model="ototal"/>
+					  </div>
+					  <div class="col-md-6">
+					   		<input type="text" class="form-control"
+                          id="cpincode" placeholder="Customer Pincode" ng-model="oadvance"/>
+					  </div>
+				</div>
+				<div class="modal-body row">
+					  <div class="col-md-6">
+					    	 <input type="text" class="form-control"
+                      		id="cstate" placeholder="Customer state" ng-model="oremaning"/>
+					  </div>
+				</div>
+                 
+                  
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="addCustomer()">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+      
+      
+      
+</div>
+
+

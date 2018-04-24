@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div ng-controller='configurationController'>
+	
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#customerConf">Customer Configuration +</button>
+	<br/><br/>
+	<div id="customerConf" class="collapse">
+		<div class="checkbox">
+		  <label style="margin-left:50px;"><input type="checkbox" value="" ng-model='receivedOrderEmailSetting'> Received order EMAIL to customer</label>
+		</div><br/>
+		<div class="checkbox">
+		  <label style="margin-left:50px;"><input type="checkbox" value="" ng-model='receivedOrderSMSSetting'> Received order SMS to customer</label>
+		</div><br/>
+		<div class="checkbox">
+		  <label style="margin-left:50px;"><input type="checkbox" value="" ng-model='orderReadyToDispatchEMAIlSetting'> Order ready to dispatch EMAIL to customer</label>
+		</div><br/>
+		<div class="checkbox">
+		  <label style="margin-left:50px;"><input type="checkbox" value="" ng-model='orderReadyToDispatchSMSSetting'> Order ready to dispatch SMS to customer</label>
+		</div><br/>
+		<div class="col-xs-4">
+    		<label style="margin-left:50px;">ThresHold count For Catalog Items
+    		<input class="form-control" ng-model="threshHoldCount" placeholder=0 type="text"></label>
+  		</div><br/>
+		<div class="checkbox disabled">
+		  <button style="margin-left:50px;" type="button" class="btn btn-primary" ng-click='updateConf()'>Update Configuration</button>
+		</div>
+		
+		 
+	</div>	  
+</div>

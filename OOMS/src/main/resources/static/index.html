@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/circle.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/controller.js"></script>
+  <script src="/js/catalogController.js"></script>
+  <script src="/js/customerController.js"></script>
+  <script src="/js/orderController.js"></script>
+  <script src="/js/neworderController.js"></script>
+  <script src="/js/confirmorderController.js"></script>
+  <script src="/js/orderdetailsController.js"></script>
+  <script src="/js/supplierController.js"></script>
+  <script src="/js/supplierorderController.js"></script>
+  <script src="/js/customerDetailController.js"></script>
+  <script src="/js/indexController.js"></script>
+  <script src="/js/homeController.js"></script>
+  <script src="/js/configurationController.js"></script>
+  <script src="/js/contactController.js"></script>
+  <script src="/js/purchaseOrderController.js"></script>
+  <script src="/js/newPurchaseOrderController.js"></script>
+  <script src="/js/confirmPurchaseOrderController.js"></script>
+  <script src="/js/supplierDetailsController.js"></script>
+  <script src="/js/purchaseOrderDetailsController.js"></script>
+  <script src="/js/notificationController.js"></script>
+  <script src="/js/profileController.js"></script>
+   <script src="/js/taxController.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angucomplete-alt/2.4.1/angucomplete-alt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.js"></script>
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.6/angular-resource.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-app="oomsApp" ng-controller='indexController'>
+<script>
+  
+	var session_email = localStorage.getItem("email");
+	var session_token = localStorage.getItem("token");
+	if(session_email == null || session_token == null){
+			window.location ='login.html'
+		}
+  
+ </script>
+ <div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="#/home"><p style="color:white;font-size:30px;">OOMS</p></a>
+    
+    <div>
+		<p style="color:white;font-size:30px;">Online Order Management System</p>
+	</div>
+    
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#/home">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Dashboard</span>
+          </a>
+        </li>
+       
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseBuyer" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-sitemap"></i>
+            <span class="nav-link-text">Buyer Portal</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseBuyer">
+            <li>
+              <a href="#/customers">My Customers</a>
+            </li>
+            <li>
+              <a href="#/orders">My Orders</a>
+            </li>
+            <li>
+              <a href="#/catalog">My Catalog</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSupplier" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-sitemap"></i>
+            <span class="nav-link-text">Supplier Portal</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseSupplier">
+            <li>
+              <a href="#/suppliers">My Suppliers</a>
+            </li>
+            <li>
+              <a href="#/purchaseOrders">My Purchase Orders</a>
+            </li>
+           
+          </ul>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#/taxes">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">My Taxes</span>
+					</a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#/configuration">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Configuration</span>
+          </a>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#/contact">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Contact Support</span>
+          </a>
+        </li>
+        
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#/profile">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Manage my Profile</span>
+          </a>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#/notifications">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">My Notifications</span>
+					</a>
+        </li>
+        
+      </ul>
+     
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mr-lg-2">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+  
+      <div ng-view></div>
+      
+    </div>
+      
+   </div>
+  
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © OOMS 2017</small>
+        </div>
+      </div>
+    </footer>
+   
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-controller="loginController">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" ng-click="doLogout()">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   <!--  <script src="vendor/jquery/jquery.min.js"></script> -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/chart.js/Chart.js"></script> 
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.js"></script>
+   
+  </div>
+</body>
+</html>

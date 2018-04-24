@@ -1,0 +1,121 @@
+<div  ng-controller="catalogController">
+<div class="modal-body row">
+					  <div class="col-md-9">
+					    	<button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm1">Add New Item to Catalog</button>
+					  </div>
+					  <div class="col-md-3">
+					   		<input type="text" class="form-control" ng-model="search" placeholder="Enter text to search" />
+					  </div>
+</div>
+      <div class="card mb-3">
+        
+        <div class="card-header">
+          <i class="fa fa-table"></i> My Catalog Items</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Brand</th>
+                  <th>Price</th>
+                  <th>UOM</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat = "item in catalog.items | filter : search">
+              	<td>{{item.name}}</td>
+              	<td>{{item.description}}</td>
+              	<td>{{item.brand}}</td>
+              	<td>{{item.price}}</td>
+              	<td>{{item.uom}}</td>
+              	<td>{{item.stauts}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      
+    <!-- modal for adding new item -->  
+    <div class="modal fade" id="myModalNorm1" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            Add New Item Details
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form">
+                
+                  <div class="form-group">
+                    <label for="iname">Name:</label>
+                      <input type="text" class="form-control"
+                      id="iname" placeholder="Enter item Name" ng-model="iname"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="idescription">Description</label>
+                      <input type="text" class="form-control"
+                          id="idescription" placeholder="Item Description" ng-model="idescription"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="ibrand">Brand</label>
+                      <input type="text" class="form-control"
+                          id="ibrand" placeholder="Item Brand" ng-model="ibrand"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="iprice">Price</label>
+                      <input type="text" class="form-control"
+                          id="iprice" placeholder="Item Price" ng-model="iprice"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="iuom">UOM</label>
+                      <input type="text" class="form-control"
+                          id="iuom" placeholder="Item Unit Of Measure" ng-model="iuom"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="istatus">Status</label>
+                      <input type="text" class="form-control"
+                          id="istatus" placeholder="Active/Inactive" ng-model="istatus"/>
+                  </div>
+                  
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="addItem()" data-dismiss="modal">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+      
+      
+      
+</div>
+
+

@@ -1,0 +1,8 @@
+1)Create User:
+
+URL:http://localhost:8080/user/createUser
+Method:POST
+Header:Content/Type:Application/json
+Request Json:
+
+{"id":0,"name":"Nitin Pawar","email":"achievers.nitin@gmail.com","phone":"8975972716","password":"Pass@123","dateOfRegistration":null,"address":null,"catalog":{"id":0,"name":"Medical Catalog","dateOfCreation":1510122047974,"items":[{"id":0,"name":"Combiflame","description":"tablet for headche","brand":"COX","price":45.0,"imageurl":null,"stauts":"ACTIVE","uom":"NOs"},{"id":0,"name":"Combiflame","description":"tablet for headche","brand":"COX","price":45.0,"imageurl":null,"stauts":"ACTIVE","uom":"NOs"},{"id":0,"name":"Combiflame","description":"tablet for headche","brand":"COX","price":45.0,"imageurl":null,"stauts":"ACTIVE","uom":"NOs"},{"id":0,"name":"Combiflame","description":"tablet for headche","brand":"COX","price":45.0,"imageurl":null,"stauts":"ACTIVE","uom":"NOs"}],"status":"ACTIVE"},"customers":null,"suppliers":null}

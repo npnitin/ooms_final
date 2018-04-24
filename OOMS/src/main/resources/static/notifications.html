@@ -1,0 +1,17 @@
+
+<div ng-controller='notificationController'>
+
+<div style='float: right;'> <a href="#/home">Back</a></div><br/>
+<ul class="list-group">
+    <li ng-repeat = "notification in notifications" class="list-group-item list-group-item-success">
+    <div>
+	    <div><h4 class="list-group-item-heading">{{notification.category}}</h4></div><div style="float: right"><p class="list-group-item-text">{{notification.date}}</p></div>
+	    <div><h6 class="list-group-item-heading">{{notification.header}}</h6></div>
+	    <div> <p class="list-group-item-text">{{notification.message}}</p></div>
+    </div>
+    
+    
+    </li>
+   </ul>
+
+</div>

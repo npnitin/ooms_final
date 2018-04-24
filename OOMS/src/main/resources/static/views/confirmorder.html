@@ -1,0 +1,64 @@
+<div ng-controller="confirmorderController">
+
+		<b>Customer Details:</b>
+			<div class="modal-body row">
+					  <div class="col-md-4">
+					    	Name: {{ocname}}
+					  </div>
+					  <div class="col-md-4">
+					   		Email: {{ocemail}}
+					  </div>
+					  <div class="col-md-4">
+					   		Phone: {{ocphone}}
+					  </div>
+			</div> 
+			
+			<b>ItemDetails:</b>
+			 <table class="table table-bordered">
+                
+                <thead>
+                	<th>Item Name</th>
+                	<th>Price</th>
+                	<th>Quantity</th>
+                	<th>Total</th>
+                </thead>
+                <tbody>
+                	<tr ng-repeat="item in items track by $index" ng-init="index=0">
+               			<td>{{item.name}}</td>
+               			<td>{{item.price}}</td>
+               			<td>{{item.count}}</td>
+               			<td>{{item.count * item.price}}</td>
+               		</tr>
+                </tbody>
+                
+                </table>
+                
+               <b>OrderDetails:</b>
+               <div class="modal-body row">
+					  <div class="col-md-4">
+					    	Total Amount: {{totalamt}}
+					  </div>
+					   <div class="col-md-4">
+					    	 <input type="text" class="form-control"
+                      		id="cname" placeholder="Paid Amount" ng-model="paidamt" ng-blur="calculateBalanceAmt()"/>
+					  </div>
+					  <div class="col-md-4">
+					   		<input type="text" class="form-control"
+                          id="cemail" placeholder="Balance Amount" ng-model="balanceamt"/>
+					  </div>
+				</div> 
+				 <div class="modal-body row">
+					  
+					   <div class="col-md-4">
+					    	
+					  </div>
+					  <div class="col-md-4">
+					    	
+					  </div>
+					  <div class="col-md-4">
+					   		  <button class="btn btn-success btn float-right" ng-click="submitOrder()">Submit Order</button>
+					  </div>
+				</div> 
+              
+              
+</div>

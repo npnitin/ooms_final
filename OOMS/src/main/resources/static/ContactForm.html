@@ -1,0 +1,43 @@
+<style>
+
+.red{
+    color:red;
+    }
+.form-area
+{
+    background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+	
+	}
+</style>
+<body ng-controller='contactController'>
+	<div class="container">
+<div class="col-md-5" style="margin-left: 200px">
+    <div class="form-area">  
+        <form role="form" id="frm">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
+    				<div class="form-group">
+						<input type="text"ng-model="name" class="form-control" id="name" name="name" placeholder="Name" required>
+					</div>
+					<div class="form-group">
+						<input type="text" ng-model="email" class="form-control" id="email" name="email" placeholder="Email" required>
+					</div>
+					<div class="form-group">
+						<input type="text" ng-model="mobile" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+					</div>
+					<div class="form-group">
+						<input type="text" ng-model="subject" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+					</div>
+                    <div class="form-group">
+                    <textarea class="form-control" ng-model="message" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+         
+                    </div>
+            
+        <button type="button" id="submit" name="submit" class="btn btn-primary pull-right" ng-click="submitRequest()">Submit Form</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>

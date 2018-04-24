@@ -1,0 +1,196 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.badge-notify{
+   background:red;
+   position:relative;
+   top: -20px;
+   left: -55px;
+  }
+  </style>
+<div ng-controller='homeController'>
+<div class="modal-body row">
+		<div class="col-md-12">
+			<div class="card">
+			    <div class="card-body">
+			      <h3 class="card-title">Notifications</h3>   
+  					<a href="#/notifications" class="btn btn-default btn-lg btn-link" style="font-size:26px;">
+    					<span class="glyphicon glyphicon-comment"></span>
+   					 	<img src="https://freeiconshop.com/wp-content/uploads/edd/notification-flat.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"></img>				      
+ 					</a>
+ 					<span class="badge badge-notify">{{unreadNotifications}}</span>
+			      	Includes notifications of orders,purchaseOrders and catalog items. 
+			    </div>
+  			</div>
+		</div>				    	
+</div>
+<div class="modal-body row">
+					  <div class="col-md-6">
+					    	<div class="w3-container" style="margin-top:-50px">
+							  <h2>  &nbsp</h2>
+							  <div class="w3-card-4" style="width:100%">
+							    <header class="w3-container w3-light-grey">
+							      <h3>customers</h3>
+							    </header>
+							    <div class="w3-container">
+							     <p>You have total  <b>{{totalCustomers}}</b> customers </p>
+							     <p>Customers onboarded today are:  <b>{{todaysCustomers}}</b></p>
+							      <hr>
+							      <img src="https://www.w3schools.com/w3css/img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+							      <p>This tab shows total customers you have and customers onboarded today.Cleck on the View Customer Details button below to see details of todays onboarded customers.</p></div>
+							    
+							    <div id="customerDetailsDiv" class="collapse">
+								 	 <table class="table table-bordered"  width="100%" cellspacing="0">
+						              <thead>
+						                <tr>
+						                  <th>Name</th>
+						                  <th>Phone</th>
+						                  <th>City</th>
+						                </tr>
+						              </thead>
+						              
+						              <tbody>
+						              <tr ng-repeat = "customer in homeDto.todayscustomers | filter : search">
+						              	<td>{{customer.name}}</td>
+						              	<td>{{customer.mobile}}</td>
+						              	<td>{{customer.address.city}}</td>
+						              	
+						              </tr>
+						              </tbody>
+						            </table>   
+								 </div>
+							    
+							    <button class="w3-button w3-block w3-dark-grey" data-toggle="collapse" data-target="#customerDetailsDiv">+ View Customer Details</button>
+							  </div>
+				
+							</div>
+					  </div>
+					  <div class="col-md-6">
+					   		<div class="w3-container" style="margin-top:-50px">
+							  <h2>  &nbsp</h2>
+							  <div class="w3-card-4" style="width:100%">
+							    <header class="w3-container w3-light-grey">
+							      <h3>Customer Orders</h3>
+							    </header>
+							    <div class="w3-container">
+							     <p>You have total  <b>{{totalOrders}}</b> orders </p>
+							     <p>Todays orders are:  <b>{{todaysOrders}}</b></p>
+							      <hr>
+							      <img src="http://xn--12ca8dzbyed5h2bu.com/wp-content/uploads/2012/04/order_logo.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+							      <p>This tab shows total orders you have and orders placed today.Cleck on the View Order Details button below to see details of todays orders details.</p>
+							      </div>
+							    <div id="orderDetailsDiv" class="collapse">
+								 	 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							              <thead>
+							                <tr>
+							                  <th>Customer Name</th>
+							                  <th>Total Amount</th>
+							                  <th>Advance Amount</th>
+							                  <th>Balance Amount</th>
+							                
+							 
+							                </tr>
+							              </thead>
+							             
+							              <tbody>
+							              <tr ng-repeat = "order in homeDto.todaysorders | filter : search">
+							              	<td>{{order.customer.name}}</td>
+							              	<td>'&#8377;'{{order.totalCost}}</td>
+							              	<td>'&#8377;'{{order.advanceAmount}}</td>
+							              	<td>'&#8377;'{{order.remainingbalance}}</td>
+							              	
+							              </tr>
+							              </tbody>
+            					</table>
+								 </div>
+							    
+							    <button class="w3-button w3-block w3-dark-grey" data-toggle="collapse" data-target="#orderDetailsDiv">+ View Order Details</button>
+							  </div>
+							</div>
+					  </div>
+</div>
+
+
+
+<div class="modal-body row">
+					  <div class="col-md-6">
+					    	<div class="w3-container" style="margin-top:-50px">
+							  <h2>  &nbsp</h2>
+							  <div class="w3-card-4" style="width:100%">
+							    <header class="w3-container w3-light-grey">
+							      <h3>Suppliers</h3>
+							    </header>
+							    <div class="w3-container">
+							     <p>You have total  <b>{{totalSuppliers}}</b> suppliers </p>
+							     <p>Suppliers onboarded today are:  <b>{{todaysSuppliers}}</b></p>
+							      <hr>
+							      <img src="http://icongal.com/gallery/image/207599/user_customer_logo_social_browser_face_buzz_google_person.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+							      <p>This tab shows total Suppliers you have and Suppliers onboarded today.Cleck on the View Supplier Details button below to see details of todays onboarded Suppliers.</p>
+							    </div>
+							     <div id="supplierDetailsDiv" class="collapse">
+							      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						              <thead>
+						                <tr>
+						                  <th>Name</th>
+						                  <th>Phone</th>
+						                  
+						                </tr>
+						              </thead>
+						              <tbody>
+						              <tr ng-repeat = "supplier in homeDto.todayssuppliers | filter : search">
+						              	<td>{{supplier.name}}</td>
+						              	<td>{{supplier.phone}}</td>
+						              	
+						              </tr>
+						              </tbody>
+						           </table>
+							     </div>
+							    <button class="w3-button w3-block w3-dark-grey" data-toggle="collapse" data-target="#supplierDetailsDiv">+ View Supplier Details</button>
+							  </div>
+							</div>
+					  </div>
+					  <div class="col-md-6">
+					   		<div class="w3-container" style="margin-top:-50px">
+							  <h2>  &nbsp</h2>
+							  <div class="w3-card-4" style="width:100%">
+							    <header class="w3-container w3-light-grey">
+							      <h3>Supplier Orders</h3>
+							    </header>
+							    <div class="w3-container">
+							     <p>You have total  <b>{{totalSupplierOrders}}</b> supplier orders </p>
+							     <p>Todays supplier orders are:  <b>{{todaysSupplierOrders}}</b></p>
+							      <hr>
+							      <img src="https://3.imimg.com/data3/KK/UF/MY-11968239/normal-delivery-250x250.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+							      <p>This tab shows total Supplier orders you have and Supplier orders placed today.Click on the View Supplier Details button  to see details.</p>
+							    
+							    </div>
+							    <div id="supplierOrderDetailsDiv" class="collapse">
+							      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						              <thead>
+						                <tr>
+						                  <th>SupplierName</th>
+						                  <th>Amount</th>
+						                  
+						                </tr>
+						              </thead>
+						              <tbody>
+						              <tr ng-repeat = "supplierOrder in homeDto.todaysSupplierseOrders | filter : search">
+						              	<td>{{supplierOrder.supplier.name}}</td>
+						              	<td>'&#8377;'{{supplierOrder.totalCost}}</td>
+						              	
+						              </tr>
+						              </tbody>
+						           </table>
+							     </div>
+							    <button class="w3-button w3-block w3-dark-grey" data-toggle="collapse" data-target="#supplierOrderDetailsDiv">+ View Supplier Order Details</button>
+							  
+							    </div>
+							  </div>
+							</div>
+
+
+
+
+
+
+	
+</div>
